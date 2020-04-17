@@ -526,16 +526,20 @@ var weatherData = {
     }
    }
 
-// Challenge 1: If all the high temperatures in the three day forecast are above 85, log, "It's going to be hot as heck all week!" to the console.
 
-if (weatherData.query.results.channel.item.forecast[0].high > 85 && weatherData.query.results.channel.item.forecast[1].high > 85 && weatherData.query.results.channel.item.forecast[2].high > 85){
-    console.log("It's going to be hot as heck all week!");
-}
+for (var i = 0; i < 3; i++){
 
-// Challenge 2: If all of the high temperatures in the three day forecast are below 40, log "It's going to be cold as heck all week!" to the console.
+    // Challenge 1: If all the high temperatures in the three day forecast are above 85, log, "It's going to be hot as heck all week!" to the console.
 
-else if (weatherData.query.results.channel.item.forecast[0].high < 40 && weatherData.query.results.channel.item.forecast[1].high < 40 && weatherData.query.results.channel.item.forecast[2].high < 40){
-    console.log("It's going to be cold as heck all week!");
+    if ((weatherData.query.results.channel.item.forecast.every(item => item.high > 85)) === true){
+        console.log("It's going to be hot as heck all week!");
+    }
+
+    // Challenge 2: If all of the high temperatures in the three day forecast are below 40, log "It's going to be cold as heck all week!" to the console.
+
+    else if ((weatherData.query.results.channel.item.forecast.every(item => item.high < 40)) === true){
+        console.log("It's going to be cold as heck all week!");
+    }
 }
 
 // Challenge 3: If any of the low temperatures are below 20, log a sentence about the specific day. (Example: "Wednesday will be cold as heck!")
